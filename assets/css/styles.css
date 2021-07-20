@@ -2,6 +2,11 @@
 	display: inline-flex;
 }
 
+.jet-woo-button-content > * {
+	display: flex;
+	align-self: center;
+}
+
 .jet-woo-button-content .button-icon svg {
 	height: 1em;
 	width: 1em;
