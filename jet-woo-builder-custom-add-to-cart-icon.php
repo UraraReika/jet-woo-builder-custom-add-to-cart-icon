@@ -12,7 +12,7 @@
  * Domain Path: /languages
  */
 
-use Elementor\Jet_Woo_Products as Products_Grid;
+use Elementor\Controls_Manager;
 
 // If this file is called directly, abort.
 if ( ! defined( 'WPINC' ) ) {
@@ -32,6 +32,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_styles' ] );
 		// register controls for Products Grid widget
 		add_action( 'elementor/element/jet-woo-products/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
+		add_action( 'elementor/element/jet-woo-products/section_not_found_message_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
 		// handle custom icon settings
 		add_filter( 'jet-woo-builder/jet-woo-products-grid/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
 		// trigger widget button
@@ -68,7 +69,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			'enable_custom_add_to_cart_icon',
 			[
 				'label' => esc_html__( 'Enable Custom Icon', 'jet-woo-builder' ),
-				'type'  => \Elementor\Controls_Manager::SWITCHER,
+				'type'  => Controls_Manager::SWITCHER,
 			]
 		);
 
@@ -76,7 +77,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			'custom_add_to_cart_icon',
 			[
 				'label'       => esc_html__( 'Select Icon', 'jet-woo-builder' ),
-				'type'        => \Elementor\Controls_Manager::ICON,
+				'type'        => Controls_Manager::ICON,
 				'label_block' => true,
 				'file'        => '',
 				'default'     => 'fa fa-shopping-cart',
@@ -94,7 +95,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			'icon_align',
 			[
 				'label'     => esc_html__( 'Icon Position', 'jet-woo-builder' ),
-				'type'      => \Elementor\Controls_Manager::SELECT,
+				'type'      => Controls_Manager::SELECT,
 				'default'   => 'row',
 				'options'   => [
 					'row'         => esc_html__( 'Before', 'jet-woo-builder' ),
@@ -113,7 +114,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			'icon_indent',
 			[
 				'label'     => esc_html__( 'Icon Spacing', 'jet-woo-builder' ),
-				'type'      => \Elementor\Controls_Manager::SLIDER,
+				'type'      => Controls_Manager::SLIDER,
 				'range'     => [
 					'px' => [
 						'max' => 50,
@@ -129,6 +130,64 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 				'condition' => [
 					'enable_custom_add_to_cart_icon' => 'yes',
 				],
+			]
+		);
+
+		$obj->end_controls_section();
+
+	}
+
+	public function register_custom_add_to_cart_icon_style_controls( $obj ) {
+
+		$obj->start_controls_section(
+			'section_style_custom_icon',
+			[
+				'label' => esc_html__( 'Custom Icon', 'jet-woo-builder' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			]
+		);
+
+		$obj->add_control(
+			'custom_icon_color',
+			[
+				'label'     => esc_html__( 'Color', 'jet-woo-builder' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .jet-woo-button-content .button-icon'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .jet-woo-button-content .button-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$obj->add_control(
+			'custom_icon_hover_color',
+			[
+				'label'     => esc_html__( 'Hover Color', 'jet-woo-builder' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} a:hover .jet-woo-button-content .button-icon'          => 'color: {{VALUE}};',
+					'{{WRAPPER}} a:hover .jet-woo-button-content .button-icon svg'      => 'fill: {{VALUE}};',
+					'{{WRAPPER}} button:hover .jet-woo-button-content .button-icon'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} button:hover .jet-woo-button-content .button-icon svg' => 'fill: {{VALUE}};',
+				],
+			]
+		);
+
+		$obj->add_responsive_control(
+			'custom_icon_size',
+			[
+				'label'     => esc_html__( 'Size', 'jet-woo-builder' ),
+				'type'      => Controls_Manager::SLIDER,
+				'range'     => [
+					'px' => [
+						'min' => 6,
+						'max' => 300,
+					],
+				],
+				'selectors' => [
+					'{{WRAPPER}} .jet-woo-button-content .button-icon' => 'font-size: {{SIZE}}{{UNIT}};',
+				],
+				'separator' => 'before',
 			]
 		);
 
