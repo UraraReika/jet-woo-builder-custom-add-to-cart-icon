@@ -1,0 +1,7 @@
+.jet-woo-button-content {
+	display: inline-flex;
+}
+
+.button.add_to_cart_button:before {
+	content: none !important;
+}

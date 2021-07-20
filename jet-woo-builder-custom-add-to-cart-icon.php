@@ -26,6 +26,10 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 
 	public function __construct() {
 
+		define( 'JET_CATCI__FILE__', __FILE__ );
+
+		// enqueue plugin styles
+		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_styles' ] );
 		// register controls for Products Grid widget
 		add_action( 'elementor/element/jet-woo-products/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
 		// handle custom icon settings
@@ -37,6 +41,13 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		// add custom add to cart icon settings to jet woo products grid provider settings list
 		add_filter( 'jet-smart-filters/providers/jet-woo-products-grid/settings-list', [ $this, 'add_custom_add_to_cart_icon_settings_to_list' ] );
 
+	}
+
+	/**
+	 * Enqueue plugin styles
+	 */
+	public function jet_woo_catci_styles() {
+		wp_enqueue_style( 'jet-woo-catci-styles', plugins_url( '/assets/css/styles.css', JET_CATCI__FILE__ ) );
 	}
 
 	/**
@@ -90,7 +101,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 					'row-reverse' => esc_html__( 'After', 'jet-woo-builder' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .jet-woo-button-content' => 'display: inline-flex; flex-direction: {{VALUE}};',
+					'{{WRAPPER}} .jet-woo-button-content' => 'flex-direction: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_custom_add_to_cart_icon' => 'yes',
@@ -149,8 +160,10 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 * @param $settings
 	 */
 	public function trigger_products_grid_settings( $settings ) {
+
 		$this->quantity = 'yes' === $settings['show_quantity'];
 		$this->icon     = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
+
 	}
 
 	/**
