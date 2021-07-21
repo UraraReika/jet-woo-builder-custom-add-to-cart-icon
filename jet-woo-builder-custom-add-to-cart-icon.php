@@ -37,10 +37,14 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		// register controls for Products List widget
 		add_action( 'elementor/element/jet-woo-products-list/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
 		add_action( 'elementor/element/jet-woo-products-list/section_not_found_message_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
+		// register controls for Archive Add to Cart widget
+		add_action( 'elementor/element/jet-woo-builder-archive-add-to-cart/section_archive_add_to_cart_content/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
+		add_action( 'elementor/element/jet-woo-builder-archive-add-to-cart/section_archive_add_to_cart_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
 
 		// handle custom icon settings
 		add_filter( 'jet-woo-builder/jet-woo-products-grid/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
 		add_filter( 'jet-woo-builder/jet-woo-products-list/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
+		add_filter( 'jet-woo-builder/jet-woo-archive-add-to-cart/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
 
 		// trigger widget settings
 		add_action( 'jet-woo-builder/templates/jet-woo-products/custom-button-icon', [ $this, 'trigger_products_grid_settings' ] );
@@ -218,6 +222,11 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 
 		if ( isset( $settings['selected_custom_add_to_cart_icon'] ) || isset( $settings['custom_add_to_cart_icon'] ) ) {
 			$settings['selected_custom_add_to_cart_icon'] = htmlspecialchars( $widget->__render_icon( 'custom_add_to_cart_icon', '%s', '', false ) );
+		}
+
+		if ( is_a( $widget, 'Elementor\Jet_Woo_Builder_Archive_Add_To_Cart' ) ) {
+			$this->quantity = 'yes' === $settings['show_quantity'];
+			$this->icon     = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
 		}
 
 		return $settings;
