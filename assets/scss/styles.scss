@@ -1,0 +1,19 @@
+.jet-woo-button-content {
+	display: inline-flex;
+
+	> * {
+		display: flex;
+		align-self: center;
+	}
+
+	.button-icon svg {
+		height: 1em;
+		width: 1em;
+	}
+}
+
+.button.add_to_cart_button {
+	&:before {
+		content: none !important;
+	}
+}

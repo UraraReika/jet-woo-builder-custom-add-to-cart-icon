@@ -48,7 +48,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 * Enqueue plugin styles
 	 */
 	public function jet_woo_catci_styles() {
-		wp_enqueue_style( 'jet-woo-catci-styles', plugins_url( '/assets/css/styles.css', JET_CATCI__FILE__ ) );
+		wp_enqueue_style( 'jet-woo-catci-styles', plugins_url( '/assets/css/styles.min.css', JET_CATCI__FILE__ ) );
 	}
 
 	/**
