@@ -30,17 +30,28 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 
 		// enqueue plugin styles
 		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_styles' ] );
+
 		// register controls for Products Grid widget
 		add_action( 'elementor/element/jet-woo-products/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
 		add_action( 'elementor/element/jet-woo-products/section_not_found_message_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
+		// register controls for Products List widget
+		add_action( 'elementor/element/jet-woo-products-list/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
+		add_action( 'elementor/element/jet-woo-products-list/section_not_found_message_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
+
 		// handle custom icon settings
 		add_filter( 'jet-woo-builder/jet-woo-products-grid/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
-		// trigger widget button
+		add_filter( 'jet-woo-builder/jet-woo-products-list/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
+
+		// trigger widget settings
 		add_action( 'jet-woo-builder/templates/jet-woo-products/custom-button-icon', [ $this, 'trigger_products_grid_settings' ] );
+		add_action( 'jet-woo-builder/templates/jet-woo-products-list/custom-button-icon', [ $this, 'trigger_products_grid_settings' ] );
+
 		// rewrite add to cart loop template
 		add_filter( 'woocommerce_loop_add_to_cart_link', [ $this, 'custom_add_to_cart_icon_for_woocommerce_loop_add_to_cart_link' ], 20, 3 );
-		// add custom add to cart icon settings to jet woo products grid provider settings list
+
+		// add custom add to cart icon settings to providers settings list
 		add_filter( 'jet-smart-filters/providers/jet-woo-products-grid/settings-list', [ $this, 'add_custom_add_to_cart_icon_settings_to_list' ] );
+		add_filter( 'jet-smart-filters/providers/jet-woo-products-list/settings-list', [ $this, 'add_custom_add_to_cart_icon_settings_to_list' ] );
 
 	}
 
