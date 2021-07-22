@@ -279,11 +279,13 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			if ( $this->quantity && $this->icon ) {
 				$html = '<form action="' . esc_url( $product->add_to_cart_url() ) . '" class="cart" method="post" enctype="multipart/form-data">';
 				$html .= woocommerce_quantity_input( [], $product, false );
+				$html .= '<div class="jet-woo-btn-with-custom-icon-wrapper">';
 				$html .= '<button type="submit" class="alt ' . $args['class'] . '" data-product_id="' . $product->get_id() . '" data-quantity="1"><span class="jet-woo-button-content"><span class="button-icon">' . $this->icon . '</span><span class="button-label">' . esc_html( $product->add_to_cart_text() ) . '</span></span></button>';
+				$html .= '</div>';
 				$html .= '</form>';
 			} elseif ( $this->icon ) {
 				$html = sprintf(
-					'<a href="%s" data-quantity="%s" class="%s" %s><span class="jet-woo-button-content"><span class="button-icon">' . $this->icon . '</span><span class="button-label">%s</span></span></a>',
+					'<div class="jet-woo-btn-with-custom-icon-wrapper"><a href="%s" data-quantity="%s" class="%s" %s><span class="jet-woo-button-content"><span class="button-icon">' . $this->icon . '</span><span class="button-label">%s</span></span></a></div>',
 					esc_url( $product->add_to_cart_url() ),
 					esc_attr( isset( $args['quantity'] ) ? $args['quantity'] : 1 ),
 					esc_attr( isset( $args['class'] ) ? $args['class'] : 'button' ),

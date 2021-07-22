@@ -1,23 +1,24 @@
 .jet-woo-btn-with-custom-icon-wrapper {
 	display: inline;
-}
 
-.jet-woo-button-content {
-	display: inline-flex;
+	.jet-woo-button-content {
+		display: inline-flex;
 
-	> * {
-		display: flex;
-		align-self: center;
+		> * {
+			display: flex;
+			align-self: center;
+		}
+
+		.button-icon svg {
+			height: 1em;
+			width: 1em;
+		}
 	}
 
-	.button-icon svg {
-		height: 1em;
-		width: 1em;
-	}
-}
-
-.button.add_to_cart_button {
-	&:before {
-		content: none !important;
+	.button.add_to_cart_button,
+	.button.single_add_to_cart_button {
+		&:before {
+			content: none !important;
+		}
 	}
 }
