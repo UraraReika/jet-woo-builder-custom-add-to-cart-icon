@@ -19,5 +19,5 @@ To use this plugin with Products Grid widget you need rewrite `item-button.php` 
 1. Open this template and paste this line of code `do_action( 'jet-woo-builder/templates/jet-woo-products-list/custom-button-icon', $settings );`
    after line 19.
 
-### Archive Add to Cart widget
+### Archive Add to Cart & Single Add to Cart widgets
 Just activate plugin.
