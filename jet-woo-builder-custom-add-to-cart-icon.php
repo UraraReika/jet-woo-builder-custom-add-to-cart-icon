@@ -29,8 +29,9 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		define( 'JET_CATCI__FILE__', __FILE__ );
 
 		// enqueue plugin scripts and styles
-		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_styles' ] );
+		add_action( 'elementor/editor/before_enqueue_scripts', [ $this, 'jet_woo_catci_scripts' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_scripts' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'jet_woo_catci_styles' ] );
 
 		// register controls for Products Grid widget
 		add_action( 'elementor/element/jet-woo-products/section_general/after_section_end', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
@@ -79,7 +80,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 *
 	 */
 	public function jet_woo_catci_scripts() {
-		wp_enqueue_script( 'jet-woo-catci-scripts', plugins_url( '/assets/js/scripts.js', JET_CATCI__FILE__ ), [ 'jquery' ] );
+		wp_enqueue_script( 'jet-woo-catci-scripts', plugins_url( '/assets/js/scripts.js', JET_CATCI__FILE__ ), [ 'jquery' ], '1.0.0', true );
 	}
 
 	/**
