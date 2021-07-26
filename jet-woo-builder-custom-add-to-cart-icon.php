@@ -168,6 +168,11 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 
 	}
 
+	/**
+	 * Register custom Add to Cart icon style controls
+	 *
+	 * @param $obj
+	 */
 	public function register_custom_add_to_cart_icon_style_controls( $obj ) {
 
 		$obj->start_controls_section(
