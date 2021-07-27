@@ -16,7 +16,7 @@
 
 			elementor.channels.editor.on( 'section:activated', function ( sectionName, editor ) {
 				let editedElement = editor.getOption( 'editedElementView' ),
-					editorBtnWrapper = editedElement.$el.find( '.elementor-jet-single-add-to-cart .jet-woo-btn-with-custom-icon-wrapper' );
+					editorBtnWrapper = editedElement.$el.find( '.jet-woo-btn-with-custom-icon-wrapper' );
 
 				if ( editorBtnWrapper.length > 0 ) {
 					let content = $( editorBtnWrapper ).data( 'content' );
