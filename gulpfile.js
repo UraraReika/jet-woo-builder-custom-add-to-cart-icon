@@ -3,7 +3,7 @@ let rename       = require('gulp-rename'),
 	sass         = require('gulp-sass'),
 	notify       = require('gulp-notify'),
 	autoprefixer = require('gulp-autoprefixer'),
-	sourcemaps   = require('gulp-sourcemaps')
+	sourcemaps   = require('gulp-sourcemaps');
 
 const {src, dest, task, watch, series, parallel} = require('gulp');
 
