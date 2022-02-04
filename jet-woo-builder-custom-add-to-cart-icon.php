@@ -63,7 +63,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		add_action( 'woocommerce_after_add_to_cart_quantity', [ $this, 'open_wrapper_for_single_add_to_cart_button_with_custom_icon' ] );
 		add_action( 'woocommerce_after_add_to_cart_button', [ $this, 'close_wrapper_for_single_add_to_cart_button_with_custom_icon' ] );
 
-		add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'trigger_open_wrapper_method_for_grouped product' ] );
+		add_action( 'woocommerce_before_add_to_cart_button', [ $this, 'trigger_open_wrapper_method_for_grouped_product' ] );
 
 		// add custom add to cart icon settings to providers settings list
 		add_filter( 'jet-smart-filters/providers/jet-woo-products-grid/settings-list', [ $this, 'add_custom_add_to_cart_icon_settings_to_list' ] );
@@ -339,7 +339,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	/**
 	 * Check if product is grouped and trigger open wrapper method for single product add to cart button.
 	 */
-	public function trigger_open_wrapper_method_for_grouped() {
+	public function trigger_open_wrapper_method_for_grouped_product() {
 
 		global $product;
 
