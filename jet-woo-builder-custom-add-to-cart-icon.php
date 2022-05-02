@@ -3,7 +3,7 @@
  * Plugin Name: JetWooBuilder - Custom Add to Cart Icon
  * Plugin URI:
  * Description:
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      Crocoblock
  * Author URI:  https://crocoblock.com/
  * Text Domain: jet-woo-builder
@@ -82,7 +82,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 *
 	 */
 	public function jet_woo_catci_scripts() {
-		wp_enqueue_script( 'jet-woo-catci-scripts', plugins_url( '/assets/js/scripts.js', JET_CATCI__FILE__ ), [ 'jquery' ], '1.0.0', true );
+		wp_enqueue_script( 'jet-woo-catci-scripts', plugins_url( '/assets/js/scripts.js', JET_CATCI__FILE__ ), [ 'jquery' ], '1.0.1', true );
 	}
 
 	/**
