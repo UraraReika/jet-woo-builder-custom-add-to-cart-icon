@@ -1,24 +1,26 @@
 .jet-woo-btn-with-custom-icon-wrapper {
 	display: inline;
 
-	.jet-woo-button-content {
-		display: inline-flex;
-
-		> * {
-			display: flex;
-			align-self: center;
-		}
-
-		.button-icon svg {
-			height: 1em;
-			width: 1em;
-		}
-	}
-
 	.button.add_to_cart_button,
 	.button.single_add_to_cart_button {
 		&:before {
 			content: none !important;
+		}
+	}
+}
+
+.jet-woo-button-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	.button-icon {
+		display: flex;
+		line-height: 1;
+
+		svg {
+			height: 1em;
+			width: 1em;
 		}
 	}
 }
