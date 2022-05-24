@@ -45,6 +45,9 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 		// register controls for Single Add to Cart widget
 		add_action( 'elementor/element/jet-single-add-to-cart/section_add_to_cart_style/before_section_start', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
 		add_action( 'elementor/element/jet-single-add-to-cart/section_add_to_cart_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
+		// register controls for Wishlist widget
+		add_action( 'elementor/element/jet-wishlist/section_add_to_cart_style/before_section_start', [ $this, 'register_custom_add_to_cart_icon_controls' ], 10, 2 );
+		add_action( 'elementor/element/jet-wishlist/section_add_to_cart_style/after_section_end', [ $this, 'register_custom_add_to_cart_icon_style_controls' ], 10, 2 );
 
 		// handle custom icon settings
 		add_filter( 'jet-woo-builder/jet-woo-products-grid/settings', [ $this, 'get_products_grid_icon_settings' ], 10, 2 );
@@ -104,6 +107,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 			[
 				'label' => esc_html__( 'Enable Custom Icon', 'jet-woo-builder' ),
 				'type'  => Controls_Manager::SWITCHER,
+				'frontend_available' => 'jet-wishlist' === $obj->get_name(),
 			]
 		);
 
@@ -122,6 +126,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 				'condition'   => [
 					'enable_custom_add_to_cart_icon' => 'yes',
 				],
+				'frontend_available' => 'jet-wishlist' === $obj->get_name(),
 			]
 		);
 
