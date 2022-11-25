@@ -320,10 +320,12 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 */
 	public function open_wrapper_for_single_add_to_cart_button_with_custom_icon() {
 
+		global $product;
+
 		$content = sprintf(
 			'<span class="jet-woo-button-content"><span class="button-icon">%s</span><span class="button-label">%s</span></span>',
 			$this->icon,
-			__( 'Add to cart', 'woocommerce' )
+			apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'woocommerce' ), $product )
 		);
 
 		if ( $this->icon ) {
