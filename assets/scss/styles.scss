@@ -7,6 +7,23 @@
 			content: none !important;
 		}
 	}
+
+	.button.single_add_to_cart_button.added {
+		&::after {
+			display: none;
+		}
+
+		.button-icon {
+			> * {
+				display: none;
+			}
+
+			&::before {
+				font-family: WooCommerce;
+				content: "\e017";
+			}
+		}
+	}
 }
 
 .jet-woo-button-content {
