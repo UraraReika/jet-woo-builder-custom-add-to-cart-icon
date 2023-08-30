@@ -8,19 +8,22 @@
 		}
 	}
 
-	.button.single_add_to_cart_button.added {
-		&::after {
-			display: none;
-		}
-
-		.button-icon {
-			> * {
+	.button{
+		&.single_add_to_cart_button.added,
+		&.product_type_simple.added {
+			&::after {
 				display: none;
 			}
 
-			&::before {
-				font-family: WooCommerce;
-				content: "\e017";
+			.button-icon {
+				> * {
+					display: none;
+				}
+
+				&::before {
+					font-family: WooCommerce;
+					content: "\e017";
+				}
 			}
 		}
 	}

@@ -271,10 +271,8 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 * @param $settings
 	 */
 	public function trigger_products_grid_settings( $settings ) {
-
 		$this->quantity = 'yes' === $settings['show_quantity'];
 		$this->icon     = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
-
 	}
 
 	/**
