@@ -249,19 +249,23 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 */
 	public function get_products_grid_icon_settings( $settings, $widget ) {
 
-		if ( isset( $settings['selected_custom_add_to_cart_icon'] ) || isset( $settings['custom_add_to_cart_icon'] ) ) {
-			$settings['selected_custom_add_to_cart_icon'] = htmlspecialchars( $widget->__render_icon( 'custom_add_to_cart_icon', '%s', '', false ) );
-		}
+		if ( ! empty( $settings['enable_custom_add_to_cart_icon'] ) ) {
 
-		if ( is_a( $widget, 'Elementor\Jet_Woo_Builder_Archive_Add_To_Cart' ) || is_a( $widget, 'Elementor\Jet_Woo_Builder_Single_Add_To_Cart' ) ) {
-			if ( isset( $settings['show_quantity'] ) ) {
-				$this->quantity = 'yes' === $settings['show_quantity'];
+			if ( isset( $settings['selected_custom_add_to_cart_icon'] ) || isset( $settings['custom_add_to_cart_icon'] ) ) {
+				$settings['selected_custom_add_to_cart_icon'] = htmlspecialchars( $widget->__render_icon( 'custom_add_to_cart_icon', '%s', '', false ) );
 			}
 
-			$this->icon = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
-		}
+			if ( is_a( $widget, 'Elementor\Jet_Woo_Builder_Archive_Add_To_Cart' ) || is_a( $widget, 'Elementor\Jet_Woo_Builder_Single_Add_To_Cart' ) ) {
+				if ( isset( $settings['show_quantity'] ) ) {
+					$this->quantity = 'yes' === $settings['show_quantity'];
+				}
 
-		return $settings;
+				$this->icon = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
+			}
+
+			return $settings;
+
+		}
 
 	}
 
