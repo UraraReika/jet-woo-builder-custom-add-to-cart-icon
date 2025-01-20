@@ -262,11 +262,10 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 
 				$this->icon = htmlspecialchars_decode( $settings['selected_custom_add_to_cart_icon'] );
 			}
-
-			return $settings;
-
 		}
 
+		return $settings;
+		
 	}
 
 	/**
