@@ -289,7 +289,7 @@ class Jet_Woo_Builder_Custom_Add_To_Cart_Icon {
 	 */
 	public function custom_add_to_cart_icon_for_woocommerce_loop_add_to_cart_link( $html, $product, $args ) {
 
-		if ( $product && ( $product->is_type( 'simple' ) || $product->is_type( 'variation' ) ) && $product->is_purchasable() && $product->is_in_stock() && ! $product->is_sold_individually() ) {
+		if ( $product && ( $product->is_type( 'simple' ) || $product->is_type( 'variation' ) ) && $product->is_purchasable() && $product->is_in_stock()) {
 			if ( $this->quantity && $this->icon ) {
 				$html = '<form action="' . esc_url( $product->add_to_cart_url() ) . '" class="cart" method="post" enctype="multipart/form-data">';
 				$html .= woocommerce_quantity_input( [
